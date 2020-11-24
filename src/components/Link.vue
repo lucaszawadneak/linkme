@@ -1,11 +1,11 @@
 <template>
   <div class="getBox">
     <div class="iconBox">
-      <button class="addButton">
+      <button class="addButton" @click="handleAdd">
         <PhFolderPlus :size="58" color="#D0FEFE" />
       </button>
     </div>
-    <Button title="link" :onPress="handleLink" />
+    <Button title="link" :onPress="handleSubmit" />
   </div>
 </template>
 
@@ -25,41 +25,11 @@ export default {
       default: () => {},
     },
   },
-  methods: {
-    handleLink() {
-      return console.log('oi');
-    },
-  },
+  methods: {},
 };
 </script>
 
 <style>
-.getBox {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  min-width: 250px;
-  align-self: center;
-  margin: 20px;
-  background-color: #1f3b4d;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.getBox > input {
-  background-color: #1f3b4d;
-  border: 0px;
-  border-bottom: 1px solid #1f3b4d;
-  margin-bottom: 10px;
-  height: 60px;
-  font-size: 32px;
-  font-family: 'Roboto', sans-serif;
-  color: #fff;
-}
-.getBox > input:focus {
-  border-bottom-color: #fff;
-}
-
 .iconBox {
   background-color: #1f3b4d;
   height: 200px;

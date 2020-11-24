@@ -27,6 +27,7 @@ export default {
   padding: 5px;
   border-radius: 5px;
   transition: 300ms;
+  cursor: pointer;
 }
 .generalBtn:hover {
   opacity: 0.7;

@@ -1,13 +1,16 @@
 <template>
   <div id="main">
+    <Modal v-show="modalVisible" />
     <h1>linkme</h1>
-    <GetCard />
-    <LinkCard />
+    <get-card v-show="!linkActive" />
+    <link-card v-show="!getActive" :handleAdd="addFile" />
+    <VModal />
     <a href="https://lucaszawadneak.me">Lucas Zawadneak - 2020</a>
   </div>
 </template>
 
 <script>
+import Modal from './components/Modal.vue';
 import GetCard from './components/Get.vue';
 import LinkCard from './components/Link.vue';
 
@@ -15,6 +18,24 @@ export default {
   components: {
     GetCard,
     LinkCard,
+    Modal,
+  },
+  data() {
+    return {
+      modalVisible: false,
+      getActive: false,
+      linkActive: false,
+    };
+  },
+  methods: {
+    addFile() {
+      this.linkActive = true;
+      console.log('test');
+      this.show();
+    },
+    show() {
+      this.modalVisible = !this.modalVisible;
+    },
   },
 };
 </script>
@@ -41,13 +62,18 @@ body {
   display: flex;
   flex-direction: column;
 }
-#main > h1 {
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
   font-family: 'Lobster', cursive;
-  color: #d0fefe;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 64px;
   text-align: center;
   margin-top: 20px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #d0fefe;
+  font-size: 64px;
 }
 #main > a {
   font-family: 'Roboto', sans-serif;
@@ -65,5 +91,24 @@ strong {
 button,
 span {
   font-family: 'Roboto', sans-serif;
+}
+
+.getBox {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  min-width: 250px;
+  align-self: center;
+  margin: 20px;
+  background-color: #1f3b4d;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.modalBox {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 </style>
