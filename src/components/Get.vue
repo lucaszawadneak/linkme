@@ -11,6 +11,12 @@ import Button from './Button.vue';
 
 export default {
   components: { Button },
+  props: {
+    handleSubmit: {
+      type: Function,
+      default: () => {},
+    },
+  },
   methods: {
     handleGet() {
       return console.log('oi');
@@ -41,5 +47,10 @@ export default {
   font-size: 32px;
   font-family: 'Roboto', sans-serif;
   color: #fff;
+  transition: 300ms;
+}
+
+.getBox > input:focus {
+  border-bottom-color: #017374;
 }
 </style>

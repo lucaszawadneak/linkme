@@ -49,7 +49,6 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-
 #main > a {
   font-family: 'Roboto', sans-serif;
   color: #fff;
@@ -58,13 +57,11 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-
 strong {
   font-family: 'Lobster', cursive;
   color: #d0fefe;
   font-size: 18px;
 }
-
 button,
 span {
   font-family: 'Roboto', sans-serif;
