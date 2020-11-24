@@ -42,9 +42,12 @@ export default {
   background-color: #1f3b4d;
   border: 0px;
   cursor: pointer;
-  transition: 300ms;
 }
 .addButton:hover {
   opacity: 0.5;
+  transition: 0ms;
+}
+.addButton:focus {
+  opacity: 1;
 }
 </style>

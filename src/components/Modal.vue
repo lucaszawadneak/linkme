@@ -20,9 +20,9 @@
             </div>
           </div>
           <h3>Inserir</h3>
-          <textarea type="text" v-if="fileTypeBoolean" />
-          <input type="file" v-else class="file-picker" />
-          <Button title="inserir arquivo" @click="handleSubmit" />
+          <textarea type="text" v-if="fileTypeBoolean" v-model="textValue" />
+          <input type="file" v-else class="file-picker" @change="handleFilePick" />
+          <Button title="inserir arquivo" @click="handleSubmitFile" />
         </div>
       </div>
     </div>
@@ -30,15 +30,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { PhX } from 'phosphor-vue';
 import Button from './Button.vue';
 
 export default {
   props: {
-    handleSubmit: {
-      type: Function,
-      default: () => {},
-    },
     onDismiss: {
       type: Function,
       default: () => {},
@@ -48,11 +45,29 @@ export default {
     return {
       fileType: 'text',
       fileTypeBoolean: true,
+      textValue: '',
+      fileValue: '',
     };
   },
   methods: {
-    clickme() {
-      console.log('oi');
+    ...mapActions(['addFile', 'removeFile']),
+    handleFilePick(event) {
+      console.log(event.target.files);
+    },
+    handleSubmitFile() {
+      let data = {};
+      if (this.fileType === 'text') {
+        data = {
+          fileType: this.fileType,
+          value: this.textValue,
+        };
+      } else {
+        data = {
+          fileType: this.fileType,
+          value: this.fileValue,
+        };
+      }
+      console.log(data);
     },
   },
   watch: {

@@ -4,7 +4,6 @@
     <h1>linkme</h1>
     <get-card v-show="!linkActive" />
     <link-card v-show="!getActive" :handleAdd="addFile" />
-    <VModal />
     <a href="https://lucaszawadneak.me">Lucas Zawadneak - 2020</a>
   </div>
 </template>
@@ -29,7 +28,7 @@ export default {
   },
   methods: {
     addFile() {
-      this.linkActive = true;
+      // this.linkActive = true;
       console.log('test');
       this.handleVisible();
     },
