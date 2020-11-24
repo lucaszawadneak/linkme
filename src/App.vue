@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <Modal v-show="modalVisible" />
+    <Modal v-show="modalVisible" :onDismiss="handleVisible" />
     <h1>linkme</h1>
     <get-card v-show="!linkActive" />
     <link-card v-show="!getActive" :handleAdd="addFile" />
@@ -31,9 +31,9 @@ export default {
     addFile() {
       this.linkActive = true;
       console.log('test');
-      this.show();
+      this.handleVisible();
     },
-    show() {
+    handleVisible() {
       this.modalVisible = !this.modalVisible;
     },
   },

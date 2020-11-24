@@ -5,7 +5,7 @@
         <div class="modal-container">
           <div class="header">
             <h3>Tipo do arquivo</h3>
-            <button class="icon-button">
+            <button class="icon-button" @click="onDismiss">
               <PhX :size="25" color="#fff" />
             </button>
           </div>
@@ -36,6 +36,10 @@ import Button from './Button.vue';
 export default {
   props: {
     handleSubmit: {
+      type: Function,
+      default: () => {},
+    },
+    onDismiss: {
       type: Function,
       default: () => {},
     },
@@ -145,6 +149,7 @@ export default {
 .inputHolder {
   margin: 10px 0px;
   display: flex;
+  margin-bottom: 20px;
 }
 
 #radio {
