@@ -19,6 +19,7 @@ export default new Vuex.Store({
   },
   mutations: {
     newFile(state, file) {
+      console.log(file);
       state.files.push(file);
     },
     cutFile(state, index) {
@@ -31,7 +32,7 @@ export default new Vuex.Store({
   actions: {
     addFile(context, payload) {
       const { file } = payload;
-      context.commit('newFile', file);
+      context.commit('newFile', { ...file, id: this.state.files.length });
     },
     removeFile(context, payload) {
       const { index } = payload;

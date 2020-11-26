@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <Modal v-show="modalVisible" :onDismiss="handleVisible" />
+    <Modal v-show="modalVisible" :onDismiss="handleVisible" @close="handleVisible" />
     <h1>linkme</h1>
     <get-card v-show="!linkActive" />
     <link-card v-show="!getActive" :handleAdd="addFile" />
@@ -34,6 +34,7 @@ export default {
     },
     handleVisible() {
       this.modalVisible = !this.modalVisible;
+      console.log(this.$store.state.files[0] || null);
     },
   },
 };
@@ -95,7 +96,8 @@ span {
 .getBox {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 80%;
+  max-width: 600px;
   min-width: 250px;
   align-self: center;
   margin: 20px;

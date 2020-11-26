@@ -1,11 +1,21 @@
 <template>
   <div class="getBox">
-    <div class="iconBox">
+    <div class="iconBox" v-if="files.length === 0">
       <button class="addButton" @click="handleAdd">
         <PhFolderPlus :size="58" color="#D0FEFE" />
       </button>
     </div>
-    <Button title="link" :onPress="handleSubmit" />
+    <div v-else>
+      <template v-for="item in files">
+        <div :key="item.id">
+          <h1>{{ item.value }}</h1>
+        </div>
+      </template>
+      <button class="addButton" @click="handleAdd">
+        <PhFolderPlus :size="58" color="#D0FEFE" />
+      </button>
+    </div>
+    <Button title="link" v-if="files.length !== 0" :onPress="handleSubmit" />
   </div>
 </template>
 
@@ -26,6 +36,11 @@ export default {
     },
   },
   methods: {},
+  computed: {
+    files() {
+      return this.$store.state.files;
+    },
+  },
 };
 </script>
 
@@ -42,6 +57,7 @@ export default {
   background-color: #1f3b4d;
   border: 0px;
   cursor: pointer;
+  align-self: center;
 }
 .addButton:hover {
   opacity: 0.5;

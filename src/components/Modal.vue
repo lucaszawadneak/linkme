@@ -22,7 +22,7 @@
           <h3>Inserir</h3>
           <textarea type="text" v-if="fileTypeBoolean" v-model="textValue" />
           <input type="file" v-else class="file-picker" @change="handleFilePick" />
-          <Button title="inserir arquivo" @click="handleSubmitFile" />
+          <Button title="inserir arquivo" :onPress="handleSubmitFile" />
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@ export default {
     },
     handleSubmitFile() {
       let data = {};
-      if (this.fileType === 'text') {
+      if (this.fileTypeBoolean) {
         data = {
           fileType: this.fileType,
           value: this.textValue,
@@ -67,7 +67,8 @@ export default {
           value: this.fileValue,
         };
       }
-      console.log(data);
+      this.addFile({ file: data });
+      this.$emit('close');
     },
   },
   watch: {
@@ -103,7 +104,8 @@ export default {
 }
 
 .modal-container {
-  width: 30%;
+  width: 80%;
+  max-width: 600px;
   min-width: 250px;
   margin: 0px auto;
   padding: 20px 30px;
